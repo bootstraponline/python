@@ -12,6 +12,8 @@ Milestones
   - See [Weave Cloud](https://www.weave.works/faq/weave-cloud-faq/#faq-4) free tier for GCP
 - Define access controls per directory. Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed unless an owner has approved.
   - https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+- Build out a testing strategy using a mock server
+- Define a strategy for handling merge conflicts / providing feedback to PR owners
 
 ---
 
