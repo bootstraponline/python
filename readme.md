@@ -15,6 +15,10 @@ Milestones
 - Build out a testing strategy using a mock server
 - Define a strategy for handling merge conflicts / providing feedback to PR owners
 
+
+Example GitHub webhook bot from Google deployed via terraform using Google App Engine. 
+- https://github.com/google/go-cloud/tree/master/internal/contributebot
+
 ---
 
 Python 3.8. AppEngine. Manual scaling. Size 1.
