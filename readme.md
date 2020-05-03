@@ -1,8 +1,11 @@
 # Python experiments
 
+- https://stackoverflow.com/questions/48182967/is-there-a-way-to-create-firewall-rules-for-my-google-cloud-functions-http-endpo
+  - Cloud Functions do not support firewall rules
 
 - https://cloud.google.com/appengine/docs/standard/python/application-security#app_engine_firewall
   - "Ensure that only a certain range of IP addresses from specific networks can access your app. You are not billed for traffic or bandwidth that is blocked by the firewall."
+
 - https://github.com/doodla/octohook
 - https://developer.github.com/v3/meta/
 - https://cloud.google.com/run/docs/triggering/webhooks#creating_a_webhook_target_in 
