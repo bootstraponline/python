@@ -20,3 +20,13 @@ Python 3.8.2
 - `pip install  -r requirements-test.txt`
 - `python main.py`
 - http://localhost:8080
+
+
+`gcloud app deploy`
+`gcloud app browse`
+
+gcloud app versions describe -s default 20200503t100627
+
+instanceClass: F1
+
+https://cloud.google.com/appengine/docs/standard#second-gen-runtimes
