@@ -4,6 +4,7 @@
 Python 3.8. AppEngine
 
 - https://cloud.google.com/appengine/docs/the-appengine-environments
+- https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
 
 Cloud Run has a cold start cost of about ~2 seconds. Python has a initialization delay of [~1.6 seconds](https://medium.com/@shouldroforion/battle-of-the-serverless-part-2-aws-lambda-cold-start-times-1d770ef3a7dc). Total cold start time of Python on Cloud Run will be around 3.6 seconds.
 - https://github.com/ahmetb/cloud-run-faq
