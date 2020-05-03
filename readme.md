@@ -32,6 +32,7 @@ with the assumption that incoming events are bursty.
 [pubsub]: https://cloud.google.com/pubsub
 
 - https://github.com/google/go-cloud/tree/master/internal/contributebot
+- https://github.com/googleapis/repo-automation-bots
 
 ---
 
@@ -40,6 +41,7 @@ Python 3.8. AppEngine. Manual scaling. Size 1.
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 - https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
 - https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls
+- https://cloud.google.com/appengine/docs/standard/python3/quickstart
 
 Store data.
 - https://firebase.google.com/docs/firestore/quickstart#python
