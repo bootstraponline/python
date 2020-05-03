@@ -1,7 +1,7 @@
 # Python experiments
 
 
-Python 3.7. AppEngine
+Python 3.8. AppEngine
 
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 
