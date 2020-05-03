@@ -7,7 +7,7 @@ Python 3.8. AppEngine. Manual scaling. Size 1.
 - https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
 - https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls
 
-Terraform. Appengine. Weave Flux
+Terraform. AppEngine. Weave Flux
 - https://www.weave.works/oss/flux/
 - https://www.terraform.io/docs/providers/google/r/app_engine_application.html
 
