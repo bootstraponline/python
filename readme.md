@@ -5,19 +5,19 @@ Milestones
 - Document the problem
 - AppEngine Python 3.8 hello world
 - App receives GitHub repo web hook for pull request label applied
-  - Consider using https://github.com/doodla/octohook
-- App merges pull request 
+  - Define webhook endpoint. Look into https://github.com/doodla/octohook
+  - Create event listener for Cloud Pub/Sub
+- App merges pull request when label is applied
 - AppEngine firewall rules dynamically defined via [github meta](https://developer.github.com/v3/meta/) to only accept inbound from GitHub's IP ranges
-- AppEngine deployed via Terraform + Weave Flux
-  - See [Weave Cloud](https://www.weave.works/faq/weave-cloud-faq/#faq-4) free tier for GCP
+- AppEngine deployed via Terraform
 - Define access controls per directory. Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed unless an owner has approved.
   - https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
 - Build out a testing strategy using a mock server
 - Define a strategy for handling merge conflicts / providing feedback to PR owners
 
+Consider [Weave Flux via Weave Cloud](https://www.weave.works/faq/weave-cloud-faq/#faq-4) free tier for GCP. Flux allows automatic terraform deploys.
 
 Example GitHub webhook bot from Google deployed via terraform using Google App Engine. 
-
 
 >Contribute Bot has two servers: a webhook endpoint and an event listener. The
 webhook endpoint publishes events to a [Cloud Pub/Sub topic][pubsub] that are eventually
@@ -53,7 +53,7 @@ Terraform. AppEngine. Weave Flux
 Cloud Run has a cold start cost of about ~2 seconds. Python has a initialization delay of [~1.6 seconds](https://medium.com/@shouldroforion/battle-of-the-serverless-part-2-aws-lambda-cold-start-times-1d770ef3a7dc). Total cold start time of Python on Cloud Run will be around 3.6 seconds.
 - https://github.com/ahmetb/cloud-run-faq
 
----
+## Notes
 
 - https://stackoverflow.com/questions/48182967/is-there-a-way-to-create-firewall-rules-for-my-google-cloud-functions-http-endpo
   - Cloud Functions do not support firewall rules
