@@ -15,8 +15,6 @@ def webhook():
     if github_event != 'pull_request':
         return f'skipped event {github_event}', 200, {}
 
-    # request.json is 'None' from GitHub 
-    # it's set properly when POSTing from Insomnia
     global last 
     last = request.json
     # event : PullRequestEvent = octohook.parse(github_event, request.json)
