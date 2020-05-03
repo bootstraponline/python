@@ -1,7 +1,9 @@
 # Python experiments
 
-Cloud Run & Cloud Functions have a delay (cold start).
+Cloud Run has a cold start cost of about ~2 seconds. Python has a initialization delay of [~1.6 seconds](https://medium.com/@shouldroforion/battle-of-the-serverless-part-2-aws-lambda-cold-start-times-1d770ef3a7dc). Total cold start time of Python on Cloud Run will be around 3.6 seconds.
 - https://github.com/ahmetb/cloud-run-faq
+
+---
 
 - https://stackoverflow.com/questions/48182967/is-there-a-way-to-create-firewall-rules-for-my-google-cloud-functions-http-endpo
   - Cloud Functions do not support firewall rules
