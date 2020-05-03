@@ -15,10 +15,10 @@ $ python --version
 Python 3.8.2
 ```
 
-- `pip install --upgrade pip`
-- `pip install  -r requirements.txt`
-- `pip install  -r requirements-test.txt`
-- `python main.py`
+- `pip3 install --upgrade pip`
+- `pip3 install -r requirements.txt`
+- `pip3 install -r requirements-test.txt`
+- `python3 main.py`
 - http://localhost:8080
 
 
