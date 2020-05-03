@@ -11,14 +11,14 @@ def webhook():
     # X-GitHub-Event contains an event type defined here: https://developer.github.com/webhooks/
     github_event = request.headers.get('X-GitHub-Event')
 
+    # X-GitHub-Event: pull_request
     if github_event != 'pull_request':
-        return '', 200, {}
+        return f'skipped event {github_event}', 200, {}
 
     global last 
     last = request.json
-    event : PullRequestEvent = octohook.parse(github_event, request.json)
-
-    return '', 200, {}
+    # event : PullRequestEvent = octohook.parse(github_event, request.json)
+    return f'processed event {github_event}', 200, {}
 
 last = 'no webhook data'
 

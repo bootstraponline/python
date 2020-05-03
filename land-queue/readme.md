@@ -24,6 +24,7 @@ Python 3.8.2
 
 `gcloud app deploy`
 `gcloud app browse`
+`gcloud app logs tail -s default`
 
 gcloud app versions describe -s default 20200503t100627
 
