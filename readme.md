@@ -1,10 +1,11 @@
 # Python experiments
 
 
-Python 3.8. AppEngine
+Python 3.8. AppEngine. Manual scaling. Size 1.
 
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 - https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
+- https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls
 
 Terraform. Appengine.
 - https://www.terraform.io/docs/providers/google/r/app_engine_application.html
@@ -22,6 +23,7 @@ Cloud Run has a cold start cost of about ~2 seconds. Python has a initialization
 
 - https://github.com/doodla/octohook
 - https://developer.github.com/v3/meta/
+
 - https://cloud.google.com/run/docs/triggering/webhooks#creating_a_webhook_target_in 
 - https://codelabs.developers.google.com/codelabs/cloud-run-hello-python3/index.html#0
 - https://cloud.google.com/run/docs/tips
