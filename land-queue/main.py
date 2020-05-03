@@ -20,10 +20,13 @@ from flask import Flask
 # called `app` in `main.py`.
 app = Flask(__name__)
 
+counter = 0
 
 @app.route('/')
 def hello():
-    return 'Hello World!'
+    global counter
+    counter += 1
+    return f'Hello World! {counter}'
 
 # https://cloud.google.com/appengine/docs/standard/python3/configuring-warmup-requests
 @app.route('/_ah/warmup')
