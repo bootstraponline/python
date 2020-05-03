@@ -1,4 +1,19 @@
-# Python experiments
+# Python Experiments
+
+Milestones
+
+- Document the problem
+- AppEngine Python 3.8 hello world
+- App receives GitHub repo web hook for pull request label applied
+  - Consider using https://github.com/doodla/octohook
+- App merges pull request 
+- AppEngine firewall rules dynamically defined via [github meta](https://developer.github.com/v3/meta/) to only accept inbound from GitHub's IP ranges
+- AppEngine deployed via Terraform + Weave Flux
+  - See [Weave Cloud](https://www.weave.works/faq/weave-cloud-faq/#faq-4) free tier for GCP
+- Define access controls per directory. Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed unless an owner has approved.
+  - https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+
+---
 
 Python 3.8. AppEngine. Manual scaling. Size 1.
 
