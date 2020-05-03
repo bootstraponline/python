@@ -1,5 +1,8 @@
 # Python experiments
 
+Cloud Run & Cloud Functions have a delay (cold start).
+- https://github.com/ahmetb/cloud-run-faq
+
 - https://stackoverflow.com/questions/48182967/is-there-a-way-to-create-firewall-rules-for-my-google-cloud-functions-http-endpo
   - Cloud Functions do not support firewall rules
 
