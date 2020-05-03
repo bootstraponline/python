@@ -8,6 +8,7 @@ Milestones
   - Define webhook endpoint. Look into https://github.com/doodla/octohook
   - Create event listener for Cloud Pub/Sub
 - App merges pull request when label is applied
+  - Squash merge only. Commit title is PR title. Commit body is PR body + approved reviewers
 - AppEngine firewall rules dynamically defined via [github meta](https://developer.github.com/v3/meta/) to only accept inbound from GitHub's IP ranges
 - AppEngine deployed via Terraform
 - Define access controls per directory. Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed unless an owner has approved.
