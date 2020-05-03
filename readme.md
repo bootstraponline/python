@@ -1,11 +1,16 @@
 # Python experiments
 
-
 Python 3.8. AppEngine. Manual scaling. Size 1.
 
 - https://cloud.google.com/appengine/docs/the-appengine-environments
 - https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
 - https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls
+
+Store data.
+- https://firebase.google.com/docs/firestore/quickstart#python
+
+Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)).
+- https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
 
 Terraform. AppEngine. Weave Flux
 - https://www.weave.works/oss/flux/
