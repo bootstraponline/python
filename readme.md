@@ -8,76 +8,40 @@ Monorepo allows for easier code sharing across projects. Standardization of soft
 
 ![](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/bootstraponline/python/master/overview_0.puml&githubcachefoo)
 
-## Milestones
+The [GitHub meta](https://developer.github.com/v3/meta/) API is used to fetch a list of GitHub's IP addresses. The [AppEngine firewall](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls) is configured to drop traffic not coming from GitHub.
 
-- Document the problem
-- AppEngine Python 3.8 hello world
-- App receives GitHub repo web hook for pull request label applied
-  - Define webhook endpoint. Look into https://github.com/doodla/octohook
-  - Create event listener for Cloud Pub/Sub
-- App merges pull request when label is applied
-  - Squash merge only. Commit title is PR title. Commit body is PR body + approved reviewers
-- AppEngine firewall rules dynamically defined via [github meta](https://developer.github.com/v3/meta/) to only accept inbound from GitHub's IP ranges
-- AppEngine deployed via Terraform
-- Define access controls per directory. Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed unless an owner has approved.
-  - https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+> Favor asynchronous work over synchronous
+>
+> GitHub expects that integrations respond within 10 seconds of receiving the webhook payload. If your service takes longer than that to complete, then GitHub terminates the connection and the payload is lost.
+> https://developer.github.com/v3/guides/best-practices-for-integrators/#favor-asynchronous-work-over-synchronous
+
+After a webhook payload is processed by Flask, it's submitted to [Cloud Pub/Sub](https://cloud.google.com/pubsub). An event listener then picks up the payload and processes it. 
+
+## Tech Stack
+
+- AppEngine Standard
+- Python 3.8
+- Flask
+
+## User stories
+
+As an engineer, I want to merge my pull request by adding a `land requested` label so that the code is merged automatically.
+As a security engineer, I want to ensure access control on folders in the monorepo so that engineers don't have global write access.
+As an infrastructure engineer, I want to calculate productivity metrics (such as diff land time) to understand the health of the land queue.
+
+## Feature backlog
+
+- Deploy a webhook server using [doodla/octohook](https://github.com/doodla/octohook) to parse the payload.
+- Create an event listener for Cloud Pub/Sub.
+  - See [contributebot](https://github.com/google/go-cloud/tree/master/internal/contributebot) for Pub/Sub example
+- Define terraform rules to deploy AppEngine infrastructure automatically.
+  - See [main.tf](https://github.com/google/go-cloud/blob/master/internal/contributebot/main.tf) as an example.
+- When a `land requested` label is applied to a pull request, squash merge the pull request.
+  - The pull request title represents the commit title. The pull request body is the commit body.
+  - Ensure there's at least 1 non-author reviewer that has approved the pull request before merging.
+- Dynamically apply AppEngine firewall rules via [github meta](https://developer.github.com/v3/meta/) to only accept inbound from GitHub's IP ranges
+- Define access controls per directory. Store a file in `.github/.landqueue` using the code [owners format]( https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners) (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)). Code can't be landed into a protected folder unless an owner has approved.
 - Build out a testing strategy using a mock server
 - Define a strategy for handling merge conflicts / providing feedback to PR owners
+  - Detect when merges will conflict with other pull requests. Prefer to keep master stable by merging in a stack.
 
-Consider [Weave Flux via Weave Cloud](https://www.weave.works/faq/weave-cloud-faq/#faq-4) free tier for GCP. Flux allows automatic terraform deploys.
-
-Example GitHub webhook bot from Google deployed via terraform using Google App Engine. 
-
->Contribute Bot has two servers: a webhook endpoint and an event listener. The
-webhook endpoint publishes events to a [Cloud Pub/Sub topic][pubsub] that are eventually
-processed by the event listener. GitHub has a
-[10 second webhook response time limit][github-async] combined with a
-[5000 request/hour API rate limit][github-ratelimit], so this adds buffering
-with the assumption that incoming events are bursty.
-
-[github-async]: https://developer.github.com/v3/guides/best-practices-for-integrators/#favor-asynchronous-work-over-synchronous
-[github-ratelimit]: https://developer.github.com/v3/#rate-limiting
-[pubsub]: https://cloud.google.com/pubsub
-
-- https://github.com/google/go-cloud/tree/master/internal/contributebot
-- https://github.com/googleapis/repo-automation-bots
-
----
-
-Python 3.8. AppEngine. Manual scaling. Size 1.
-
-- https://cloud.google.com/appengine/docs/the-appengine-environments
-- https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta
-- https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls
-- https://cloud.google.com/appengine/docs/standard/python3/quickstart
-
-Store data.
-- https://firebase.google.com/docs/firestore/quickstart#python
-
-Code owners format (same as [git ignore](https://git-scm.com/docs/gitignore#_pattern_format)).
-- https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
-
-Terraform. AppEngine. Weave Flux
-- https://www.weave.works/oss/flux/
-- https://www.terraform.io/docs/providers/google/r/app_engine_application.html
-
-Cloud Run has a cold start cost of about ~2 seconds. Python has a initialization delay of [~1.6 seconds](https://medium.com/@shouldroforion/battle-of-the-serverless-part-2-aws-lambda-cold-start-times-1d770ef3a7dc). Total cold start time of Python on Cloud Run will be around 3.6 seconds.
-- https://github.com/ahmetb/cloud-run-faq
-
-## Notes
-
-- https://stackoverflow.com/questions/48182967/is-there-a-way-to-create-firewall-rules-for-my-google-cloud-functions-http-endpo
-  - Cloud Functions do not support firewall rules
-
-- https://cloud.google.com/appengine/docs/standard/python/application-security#app_engine_firewall
-  - "Ensure that only a certain range of IP addresses from specific networks can access your app. You are not billed for traffic or bandwidth that is blocked by the firewall."
-
-- https://github.com/doodla/octohook
-- https://developer.github.com/v3/meta/
-
-- https://cloud.google.com/run/docs/triggering/webhooks#creating_a_webhook_target_in 
-- https://codelabs.developers.google.com/codelabs/cloud-run-hello-python3/index.html#0
-- https://cloud.google.com/run/docs/tips
-- https://github.com/GoogleContainerTools/distroless
-- https://medium.com/@shouldroforion/battle-of-the-serverless-part-2-aws-lambda-cold-start-times-1d770ef3a7dc
-  - Rust has good cold start times
