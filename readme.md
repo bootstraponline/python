@@ -6,7 +6,7 @@ Monorepo allows for easier code sharing across projects. Standardization of soft
 
 ## Land Queue
 
-![](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/bootstraponline/python/master/overview.puml)
+![](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/bootstraponline/python/master/overview.puml&foo=bar)
 
 ## Milestones
 
