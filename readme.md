@@ -4,6 +4,10 @@
 
 Monorepo allows for easier code sharing across projects. Standardization of software developement practices (such as lint rules) are easier when all code is in a single repo. One challenge the monorepo presents is access control. Multiple repositories on GitHub allow for fine grained access control (read/write) at the per repo level. In a monorepo, everyone has global read and write. To solve the write access problem, a land queue will be built to enforce access control. All users will still have global read, however merges will be done exclusively via the land queue. The land queue will enforce security policy.
 
+## Land Queue
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&fmt=svg&src=https://raw.githubusercontent.com/bootstraponline/python/master/overview.puml)
+
 ## Milestones
 
 - Document the problem
