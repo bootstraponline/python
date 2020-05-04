@@ -5,24 +5,24 @@ skinparam ArrowColor Black
 skinparam RectangleBackgroundColor #DEFFE0
 
 rectangle "GitHub → App" as r1 #DEF9FF {
- rectangle "GitHub Webhook" as a
+ rectangle "GitHub" as a
  rectangle "App Engine Firewall" as b
  rectangle "Flask (App Engine Standard)" as c
  rectangle "Cloud Pub/Sub" as d
 
- a -> b
- b -> c
- c -> d
+ a -> b: Webhook Payload
+ b -> c: Firewall rules
+ c -> d: PullRequestEvent
 }
 
 
 rectangle "App → GitHub" as r2 #DEF9FF {
  rectangle "Cloud Pub/Sub" as a2
- rectangle "App Engine Firewall" as b2
- rectangle "Flask (App Engine Standard)" as c2
+ rectangle "Flask (App Engine Standard)" as b2
+ rectangle "GitHub" as c2
 
- a2 -> b2
- b2 -> c2
+ a2 -> b2: PullRequestEvent
+ b2 -> c2: API
 }
 
 r1 -[hidden]-> r2
