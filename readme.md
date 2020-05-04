@@ -2,7 +2,7 @@
 
 ## Monorepo on GitHub
 
-Monorepo allows for easier code sharing across projects. Standardization of software developement practices (such as lint rules) are easier when all code is in a single repo. One challenge the monorepo presents is access control. Multiple repositories on GitHub allow for fine grained access control (read/write) at the per repo level. In a monorepo, everyone has global read and write. To solve the write access problem, a land queue will be built to enforce access control. All users will still have global read, however merges will be done exclusively via the land queue. The land queue will enforce security policy.
+Monorepo allows for easier code sharing across projects. Locating all code in a single repo makes enforcing standards (such as lint rules) easier. Monorepos complicate access control. Multiple repositories on GitHub allow for repo based read/write access control. In a monorepo, all users have global read and write. To solve the write access problem, a land queue will be built. All users will still retain global read, however merges will be done exclusively via the land queue. The land queue will enforce security policy.
 
 ## Land Queue
 
@@ -25,9 +25,9 @@ After a webhook payload is processed by Flask, it's submitted to [Cloud Pub/Sub]
 
 ## User stories
 
-As an engineer, I want to merge my pull request by adding a `land requested` label so that the code is merged automatically.
-As a security engineer, I want to ensure access control on folders in the monorepo so that engineers don't have global write access.
-As an infrastructure engineer, I want to calculate productivity metrics (such as diff land time) to understand the health of the land queue.
+- As an engineer, I want to merge my pull request by adding a `land requested` label so that the code is merged automatically.
+- As a security engineer, I want to ensure access control on folders in the monorepo so that engineers don't have global write access.
+- As an infrastructure engineer, I want to calculate productivity metrics (such as diff land time) to understand the health of the land queue.
 
 ## Feature backlog
 
@@ -44,4 +44,3 @@ As an infrastructure engineer, I want to calculate productivity metrics (such as
 - Build out a testing strategy using a mock server
 - Define a strategy for handling merge conflicts / providing feedback to PR owners
   - Detect when merges will conflict with other pull requests. Prefer to keep master stable by merging in a stack.
-

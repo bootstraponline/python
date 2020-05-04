@@ -1,8 +1,9 @@
-
+## Python Install
 
 `brew install python@3.8`
 
 Update `~/.bash_profile`
+
 ```bash
 # python 3
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
@@ -21,16 +22,18 @@ Python 3.8.2
 - `python3 main.py`
 - http://localhost:8080
 
+## Google cloud docs
 
-`gcloud app deploy`
-`gcloud app browse`
-`gcloud app logs tail -s default`
+- [appengine standard python3 runtime](https://cloud.google.com/appengine/docs/standard/python3/runtime#python-3.8-beta)
+- [appengine standard python3 creating-firewalls](https://cloud.google.com/appengine/docs/standard/python3/creating-firewalls)
+- [appengine standard python3 quickstart](https://cloud.google.com/appengine/docs/standard/python3/quickstart)
 
-gcloud app versions describe -s default 20200503t100627
+## App Engine Commands
 
-instanceClass: F1
-
-https://cloud.google.com/appengine/docs/standard#second-gen-runtimes
+- `gcloud app deploy`
+- `gcloud app browse`
+- `gcloud app logs tail -s default`
+- `gcloud app versions describe -s default 20200503t100627`
 
 ## Testing GitHub webhooks locally
 
